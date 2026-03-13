@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  LIAO HAONAN — Personal Portfolio Website                   ║
+  ║  版本: 1.0 | 日期: 2026                                      ║
+  ║                                                              ║
+  ║  使用方法:                                                    ║
+  ║  1. 将本文件保存为 portfolio.html                             ║
+  ║  2. 双击文件，或用任意浏览器（Chrome/Edge/Safari）打开        ║
+  ║  3. 无需服务器，无需安装任何依赖，开箱即用                    ║
+  ║  4. 需要联网加载 Google Fonts + Font Awesome 图标            ║
+  ║  5. 替换占位内容：搜索 "作品占位" 替换为真实图片路径          ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIAO HAONAN — Senior Brand Designer</title>
+
+  <!-- Font Awesome 6 (Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─────────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      height: 60px;
+      padding: 0 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-logo {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #111111;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: #777777;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #111111;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION BASE
+    ───────────────────────────────────────────── */
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #aaaaaa;
+      margin-bottom: 72px;
+    }
+
+    /* ─────────────────────────────────────────────
+       COVER
+    ───────────────────────────────────────────── */
+    #cover {
+      min-height: 100vh;
+      padding: 0 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid texture */
+    #cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .cover-inner {
+      max-width: 1120px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cover-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #555555;
+      margin-bottom: 28px;
+    }
+
+    .cover-name {
+      font-size: clamp(56px, 11vw, 128px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 0.88;
+      color: #ffffff;
+      margin-bottom: 44px;
+    }
+
+    .cover-title {
+      font-size: clamp(14px, 2vw, 20px);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666666;
+    }
+
+    .cover-scroll {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: #444444;
+      text-decoration: none;
+    }
+
+    .cover-scroll span {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .cover-scroll i {
+      font-size: 12px;
+      animation: arrowBounce 2.2s ease-in-out infinite;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50%       { transform: translateY(7px); opacity: 1; }
+    }
+
+    /* ─────────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────────── */
+    #about {
+      padding: 120px 52px;
+      background: #ffffff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    /* left column */
+    .about-col-left {
+      padding-right: 64px;
+      border-right: 1px solid #e8e8e8;
+      display: flex;
+      flex-direction: column;
+      gap: 72px;
+    }
+
+    /* right column */
+    .about-col-right {
+      padding-left: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 72px;
+    }
+
+    .about-block-title {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #bbbbbb;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    /* Personal Info */
+    .info-table {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .info-key {
+      font-size: 12px;
+      font-weight: 600;
+      color: #aaaaaa;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .info-val {
+      font-size: 13px;
+      font-weight: 400;
+      color: #222222;
+      text-align: right;
+    }
+
+    /* Work Experience */
+    .exp-entry {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-company {
+      font-size: 17px;
+      font-weight: 700;
+      color: #111111;
+      letter-spacing: -0.01em;
+    }
+
+    .exp-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: #555555;
+    }
+
+    .exp-period {
+      font-size: 11px;
+      color: #bbbbbb;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    /* Skills */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 5px 13px;
+      border: 1px solid #dddddd;
+      color: #555555;
+      cursor: default;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+
+    .skill-tag:hover {
+      background: #111111;
+      color: #ffffff;
+      border-color: #111111;
+    }
+
+    /* Expertise */
+    .expertise-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .expertise-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 13px;
+      color: #333333;
+      line-height: 1.55;
+    }
+
+    .dot {
+      flex-shrink: 0;
+      width: 5px;
+      height: 5px;
+      background: #111111;
+      border-radius: 50%;
+      margin-top: 8px;
+    }
+
+    /* ─────────────────────────────────────────────
+       PORTFOLIO
+    ───────────────────────────────────────────── */
+    #portfolio {
+      padding: 120px 52px;
+      background: #f5f5f5;
+    }
+
+    .portfolio-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 96px;
+    }
+
+    .category-block {}
+
+    .cat-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #111111;
+    }
+
+    .cat-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    .cat-meta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #bbbbbb;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      background: #ffffff;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.09);
+    }
+
+    /* 200×150 placeholder */
+    .work-thumb {
+      width: 100%;
+      height: 0;
+      padding-bottom: 75%; /* 150/200 = 75% → 4:3 aspect ratio, scales with container */
+      background: linear-gradient(145deg, #e2e2e2, #d4d4d4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-thumb-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c0c0c0;
+    }
+
+    .work-body {
+      padding: 16px 18px 20px;
+    }
+
+    .work-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .work-desc {
+      font-size: 11px;
+      color: #999999;
+      line-height: 1.55;
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    #footer {
+      background: #0d0d0d;
+      padding: 80px 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .footer-logo {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .footer-rule {
+      width: 32px;
+      height: 1px;
+      background: #333333;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 26px;
+    }
+
+    .footer-socials a {
+      color: #555555;
+      font-size: 17px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-socials a:hover {
+      color: #ffffff;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: #444444;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 28px; }
+
+      #cover { padding: 0 28px; }
+
+      #about { padding: 80px 28px; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-col-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid #e8e8e8;
+        padding-bottom: 64px;
+        gap: 56px;
+      }
+
+      .about-col-right {
+        padding-left: 0;
+        padding-top: 64px;
+        gap: 56px;
+      }
+
+      #portfolio { padding: 80px 28px; }
+
+      .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      #footer { padding: 60px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cat-title { font-size: 20px; }
+
+      .portfolio-stack { gap: 64px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ NAVIGATION ══════════════ -->
+  <nav>
+    <a href="#cover" class="nav-logo">LHN</a>
+    <ul class="nav-links">
+      <li><a href="#cover">主页</a></li>
+      <li><a href="#about">简介</a></li>
+      <li><a href="#portfolio">作品</a></li>
+      <li><a href="#footer">联系</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ══════════════ COVER ══════════════ -->
+  <section id="cover">
+    <div class="cover-inner">
+      <p class="cover-eyebrow">Portfolio &nbsp;·&nbsp; 2026</p>
+      <h1 class="cover-name">LIAO<br>HAONAN</h1>
+      <p class="cover-title">Senior Brand Designer</p>
+    </div>
+
+    <a href="#about" class="cover-scroll">
+      <span>Scroll</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">个人简介</p>
+
+      <div class="about-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="about-col-left">
+
+          <!-- 个人信息 -->
+          <div>
+            <h3 class="about-block-title">个人信息</h3>
+            <div class="info-table">
+              <div class="info-row">
+                <span class="info-key">姓名</span>
+                <span class="info-val">廖豪楠</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">年龄</span>
+                <span class="info-val">27 岁</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">学历</span>
+                <span class="info-val">视觉传达设计 · 本科</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">电话 / 微信</span>
+                <span class="info-val">+86 134 0000 0000</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">邮箱</span>
+                <span class="info-val">liaohaonan@gmail.com</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 工作经历 -->
+          <div>
+            <h3 class="about-block-title">工作经历</h3>
+            <div class="exp-entry">
+              <span class="exp-company">谢谢设计文化传播有限公司</span>
+              <span class="exp-role">资深品牌设计师 &nbsp;/&nbsp; Senior Brand Designer</span>
+              <span class="exp-period">2022.03 — 2026.03</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="about-col-right">
+
+          <!-- 软件能力 -->
+          <div>
+            <h3 class="about-block-title">软件能力</h3>
+            <div class="skills-wrap">
+              <span class="skill-tag">Photoshop</span>
+              <span class="skill-tag">Illustrator</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">InDesign</span>
+              <span class="skill-tag">After Effects</span>
+              <span class="skill-tag">Cinema 4D</span>
+              <span class="skill-tag">Blender</span>
+              <span class="skill-tag">Procreate</span>
+              <span class="skill-tag">Midjourney</span>
+            </div>
+          </div>
+
+          <!-- 业务擅长 -->
+          <div>
+            <h3 class="about-block-title">业务擅长</h3>
+            <ul class="expertise-list">
+              <li class="expertise-item">
+                <span class="dot"></span>
+                <span>品牌全案与视觉设计（完整经验）</span>
+              </li>
+              <li class="expertise-item">
+                <span class="dot"></span>
+                <span>插画与 IP 形象设计</span>
+              </li>
+              <li class="expertise-item">
+                <span class="dot"></span>
+                <span>视觉规范搭建与延展设计</span>
+              </li>
+              <li class="expertise-item">
+                <span class="dot"></span>
+                <span>物料落地与材质 / 结构 / 工艺把控</span>
+              </li>
+              <li class="expertise-item">
+                <span class="dot"></span>
+                <span>提案统筹与沟通协作</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════ PORTFOLIO ══════════════ -->
+  <section id="portfolio">
+    <div class="section-inner">
+      <p class="section-label">作品展示</p>
+
+      <div class="portfolio-stack">
+
+        <!-- ── 城市公共 ── -->
+        <div class="category-block">
+          <div class="cat-header">
+            <span class="cat-title">城市公共</span>
+            <span class="cat-meta">3 Projects</span>
+          </div>
+          <div class="works-grid">
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9484.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 A</div>
+                <div class="work-desc">东莞南城：帅帅IP家族+VI系统+延展设计+物料设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9485.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 B</div>
+                <div class="work-desc">东莞万江滘联社区：正丫起龙IP+VI系统+延展设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9486.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 C</div>
+                <div class="work-desc">东莞横沥镇：田饶步村IP+VI系统+延展设计</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 消费连锁 ── -->
+        <div class="category-block">
+          <div class="cat-header">
+            <span class="cat-title">消费连锁</span>
+            <span class="cat-meta">3 Projects</span>
+          </div>
+          <div class="works-grid">
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9494.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 A</div>
+                <div class="work-desc">东莞水务局&福地饮用水品牌：大水喉IP家族+延展设计+物料设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9488.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 B</div>
+                <div class="work-desc">黎姨鸡蛋仔品牌：马年鸡旦仔IP+延展设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9495.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 C</div>
+                <div class="work-desc">余记明华食品品牌：明华IP家族+VI系统+品牌升级</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 文旅融合 ── -->
+        <div class="category-block">
+          <div class="cat-header">
+            <span class="cat-title">文旅融合</span>
+            <span class="cat-meta">3 Projects</span>
+          </div>
+          <div class="works-grid">
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9491.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 A</div>
+                <div class="work-desc">东莞市博物馆：小狮子太保IP+延展设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9496.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 B</div>
+                <div class="work-desc">蚝岗博物馆：五千岁IP家族+延展设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label"><img src="images/IMG_9497.jpg"></div></div>
+              <div class="work-body">
+                <div class="work-title">项目 C</div>
+                <div class="work-desc">莓莓星人农业文旅新形态品牌：IP家族+物料设计</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 文化艺术 ── -->
+        <div class="category-block">
+          <div class="cat-header">
+            <span class="cat-title">文化艺术</span>
+            <span class="cat-meta">3 Projects</span>
+          </div>
+          <div class="works-grid">
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label">作品占位</div></div>
+              <div class="work-body">
+                <div class="work-title">项目 A</div>
+                <div class="work-desc">美术馆品牌与展览视觉系统设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label">作品占位</div></div>
+              <div class="work-body">
+                <div class="work-title">项目 B</div>
+                <div class="work-desc">艺术节主视觉与周边物料全案设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label">作品占位</div></div>
+              <div class="work-body">
+                <div class="work-title">项目 C</div>
+                <div class="work-desc">出版物设计，书籍装帧与版式排布</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 个人创意 ── -->
+        <div class="category-block">
+          <div class="cat-header">
+            <span class="cat-title">个人创意</span>
+            <span class="cat-meta">3 Projects</span>
+          </div>
+          <div class="works-grid">
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label">作品占位</div></div>
+              <div class="work-body">
+                <div class="work-title">项目 A</div>
+                <div class="work-desc">原创插画系列，IP 角色形象设计</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label">作品占位</div></div>
+              <div class="work-body">
+                <div class="work-title">项目 B</div>
+                <div class="work-desc">字体设计实验，中英文混排视觉探索</div>
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-thumb"><div class="work-thumb-label">作品占位</div></div>
+              <div class="work-body">
+                <div class="work-title">项目 C</div>
+                <div class="work-desc">自主品牌概念，个人艺术项目呈现</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /portfolio-stack -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer id="footer">
+    <span class="footer-logo">Liao Haonan</span>
+    <div class="footer-rule"></div>
+    <div class="footer-socials">
+      <a href="#" aria-label="微信"><i class="fa-brands fa-weixin"></i></a>
+      <a href="#" aria-label="微博"><i class="fa-brands fa-weibo"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+    <span class="footer-copy">© 2026 LHN &nbsp;·&nbsp; All Rights Reserved</span>
+  </footer>
+
+</body>
+</html>
